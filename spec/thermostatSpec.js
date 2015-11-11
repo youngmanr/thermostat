@@ -27,9 +27,15 @@ describe('thermostat', function(){
    expect(thermostat.getCurrentTemperature()).toEqual(10);
   });
 
-  it('has a max temp of 25 degress if in power saving mode', function(){
-    Thermostat.powerSavingMode();
-    expect(thermostat.powerSavingMode()).toEqual(25);
+  it('has a max temp of 25 degress', function(){
+    for (var i = 1; i < 10; i++) {
+      thermostat.increaseTemperature();
+    }
+    expect(thermostat.getCurrentTemperature()).toEqual(25);
+  });
+
+  it('power saving mode ON by defualt', function(){
+    expect(thermostat.isPowerSavingModeOn()).toEqual(true);
   });
 
 });
