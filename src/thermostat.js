@@ -8,9 +8,10 @@ Thermostat.prototype.getCurrentTemperature = function() {
 };
 
 Thermostat.prototype.increaseTemperature = function() {
-  if (this.temperature < 25) {
+  var maxTemp = (this.isPowerSavingModeOn()) ? 25 : 32;
+  if (this.temperature < maxTemp) {
     this.temperature += 1;
-  }
+  };
   return this.temperature;
 };
 

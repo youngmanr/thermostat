@@ -35,6 +35,7 @@ describe('thermostat', function(){
   });
 
   it('if powerSavingMode is OFF maximum temperature is 32', function(){
+    thermostat.switchPowerSavingModeOff();
     for (var i=1; i<20; i++) {
       thermostat.increaseTemperature();
     }
@@ -48,6 +49,11 @@ describe('thermostat', function(){
   it('switch power saving mode to OFF', function(){
     thermostat.switchPowerSavingModeOff();
     expect(thermostat.isPowerSavingModeOn()).toEqual(false);
+  });
+
+  it('has a reset button', function() {
+    thermostat.resetButton();
+    expect(thermostat.getCurrentTemperature()).toEqual(20);
   });
 
 });
