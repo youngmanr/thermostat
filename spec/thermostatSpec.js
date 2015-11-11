@@ -57,9 +57,9 @@ describe('thermostat', function(){
   });
 
   it('display colour is green if temperature is less than 18', function() {
-    thermostat.descreaseTemperature();
-    thermostat.descreaseTemperature();
-    thermostat.descreaseTemperature();
+    thermostat.decreaseTemperature();
+    thermostat.decreaseTemperature();
+    thermostat.decreaseTemperature();
     expect(thermostat.displayColour()).toEqual('green');
   });
 

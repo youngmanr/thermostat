@@ -34,3 +34,13 @@ Thermostat.prototype.switchPowerSavingModeOff = function() {
 Thermostat.prototype.resetTemperature = function() {
   this.temperature = 20;
 };
+
+Thermostat.prototype.displayColour = function() {
+    if (this.temperature < 18) {
+      return 'green';
+    };
+    if (this.temperature < 25) {
+      return 'yellow';
+    };
+      return 'red';
+};
