@@ -16,7 +16,11 @@ describe('thermostat', function(){
   });
 
   it('decreases the temperature with the down button', function(){
-    thermostat.decreasesTemperature();
+    thermostat.decreaseTemperature();
     expect(thermostat.getCurrentTemperature()).toEqual(19);
+  });
+
+  it('minimum temperature is 10 degrees', function(){
+    expect(function(){thermostat.decreaseTemperature();}).toThrow(new Error("Minimum temperature exceeded"));
   });
 });
