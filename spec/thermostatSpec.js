@@ -51,9 +51,26 @@ describe('thermostat', function(){
     expect(thermostat.isPowerSavingModeOn()).toEqual(false);
   });
 
-  it('has a reset button', function() {
-    thermostat.resetButton();
+  it('can reset temperature', function() {
+    thermostat.resetTemperature();
     expect(thermostat.getCurrentTemperature()).toEqual(20);
   });
 
+  it('display colour is green if temperature is less than 18', function() {
+    thermostat.descreaseTemperature();
+    thermostat.descreaseTemperature();
+    thermostat.descreaseTemperature();
+    expect(thermostat.displayColour()).toEqual('green');
+  });
+
+  it('display colour is yellow if temperature is less than 25', function() {
+    expect(thermostat.displayColour()).toEqual('yellow');
+  });
+
+  it('display colour is red temperature is 25 or higher', function() {
+    for (var i=1; i<6; i++) {
+      thermostat.increaseTemperature();
+    }
+    expect(thermostat.displayColour()).toEqual('red');
+  });
 });
