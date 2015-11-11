@@ -11,7 +11,8 @@ this.temperature += 1;
 };
 
 Thermostat.prototype.decreaseTemperature = function() {
-  this.temperature -= 1;
+  if (this.temperature > 10) {
+    this.temperature -= 1;
+  };
   return this.temperature;
 };
-

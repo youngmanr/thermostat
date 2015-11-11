@@ -20,7 +20,16 @@ describe('thermostat', function(){
     expect(thermostat.getCurrentTemperature()).toEqual(19);
   });
 
-  it('minimum temperature is 10 degrees', function(){
-    expect(function(){thermostat.decreaseTemperature();}).toThrow(new Error("Minimum temperature exceeded"));
+  it('has a minimum of 10 degrees', function() {
+    for (var i = 0; i < 11; i++) {
+      thermostat.decreaseTemperature();
+    }
+   expect(thermostat.getCurrentTemperature()).toEqual(10);
   });
+
+  it('has a max temp of 25 degress if in power saving mode', function(){
+    Thermostat.powerSavingMode();
+    expect(thermostat.powerSavingMode()).toEqual(25);
+  });
+
 });
