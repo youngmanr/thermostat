@@ -1,10 +1,17 @@
   <!DOCTYPE html>
   <html>
     <head>
+     <style>
+      a.test {
+       font-weight: bold;
+      }
+      </style>
+      <meta charset="utf-8">
       <title>Themostat</title>
   </head>
   <script src="src/thermostat.js"></script>
   <body>
+    <a href="http://jquery.com/">jQuery</a>
     <section>
       <h1 id="temperature"></h1>
       <p>
@@ -16,5 +23,16 @@
         <button id="powersaving-off">PSM off</button>
       </p>
     </section>
+    <script src="jquery.js"></script>
+    <script>
+      $( "a" ).addClass( "test" );
+      $( document ).ready(function() {
+        $( "a" ).click(function( event ) {
+         event.preventDefault();
+        $( this ).hide( "slow" );
+        });
+      });
+      $( "a" ).removeClass( "test" );
+    </script>
   </body>
   </html>
