@@ -1,28 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-a.test {
-  font-weight: bold;
-}
-    </style>
     <meta charset="utf-8">
     <title>Themostat</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <script src="src/thermostat.js"></script>
   <body>
-    <a href="http://jquery.com/">jQuery</a>
     <section>
       <h1 id="temperature"></h1>
-      <p>
       <button id="temperature-up">+</button>
       <button id="temperature-down">-</button>
       <button id="temperature-reset">reset</button>
-      power saving mode is <span id="power-saving-status">on</span>
+      <div class="led led-green" id="power-saving-status"></div>
       <button id="powersaving">PSM</button>
-      </p>
     </section>
     <script src="jquery.js"></script>
+    <script src="src/thermostat.js"></script>
     <script>
       $( document ).ready(function() {
         var thermostat = new Thermostat();
@@ -42,10 +35,10 @@ a.test {
         $( "#powersaving").click(function( event ) {
           thermostat.togglePowerSavingMode();
           if (thermostat.powerSavingMode) {
-            $("#power-saving-status").html('On');
+            $("#power-saving-status").removeClass("led-red").addClass("led-green");
           }
           else {
-            $("#power-saving-status").html('Off');
+            $("#power-saving-status").removeClass("led-green").addClass("led-red")
           }
           $("#temperature").html(thermostat.getCurrentTemperature());
         });
