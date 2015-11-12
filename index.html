@@ -32,6 +32,14 @@ a.test {
           thermostat.increaseTemperature();
           $("#temperature").html(thermostat.getCurrentTemperature());
         });
+        $( "#temperature-down" ).click(function( event ) {
+          thermostat.decreaseTemperature();
+          $("#temperature").html(thermostat.getCurrentTemperature());
+        });
+        $( "#temperature-reset" ).click(function( event ) {
+          thermostat.resetTemperature();
+          $("#temperature").html(thermostat.getCurrentTemperature());
+        });
       });
     </script>
   </body>
