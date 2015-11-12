@@ -5,17 +5,17 @@ describe('thermostat', function(){
     thermostat = new Thermostat();
   });
 
-  it('thermostat starts at 20 degress', function(){
+  it('default temperature is 20 degrees', function(){
     thermostat.temperature;
     expect(thermostat.getCurrentTemperature()).toEqual(20);
   });
 
-  it('increases the temperature with the up button', function(){
+  it('should increase the temperature with the up button', function(){
     thermostat.increaseTemperature();
     expect(thermostat.getCurrentTemperature()).toEqual(21);
   });
 
-  it('decreases the temperature with the down button', function(){
+  it('should decrease the temperature with the down button', function(){
     thermostat.decreaseTemperature();
     expect(thermostat.getCurrentTemperature()).toEqual(19);
   });
@@ -27,7 +27,7 @@ describe('thermostat', function(){
    expect(thermostat.getCurrentTemperature()).toEqual(10);
   });
 
-  it('if powerSavingMode is on has maximum temperature of 25', function(){
+  it('if powerSavingMode is ON has maximum temperature of 25', function(){
     for (var i = 1; i < 10; i++) {
       thermostat.increaseTemperature();
     }
@@ -42,11 +42,11 @@ describe('thermostat', function(){
     expect(thermostat.getCurrentTemperature()).toEqual(32);
   });
 
-  it('power saving mode ON by default', function(){
+  it('has power saving mode ON by default', function(){
     expect(thermostat.isPowerSavingModeOn()).toEqual(true);
   });
 
-  it('switch power saving mode to OFF', function(){
+  it('can switch power saving mode to OFF', function(){
     thermostat.switchPowerSavingModeOff();
     expect(thermostat.isPowerSavingModeOn()).toEqual(false);
   });
@@ -56,18 +56,18 @@ describe('thermostat', function(){
     expect(thermostat.getCurrentTemperature()).toEqual(20);
   });
 
-  it('display colour is green if temperature is less than 18', function() {
+  it('display colour green if temperature is less than 18', function() {
     thermostat.decreaseTemperature();
     thermostat.decreaseTemperature();
     thermostat.decreaseTemperature();
     expect(thermostat.displayColour()).toEqual('green');
   });
 
-  it('display colour is yellow if temperature is less than 25', function() {
+  it('display colour yellow if temperature is less than 25', function() {
     expect(thermostat.displayColour()).toEqual('yellow');
   });
 
-  it('display colour is red temperature is 25 or higher', function() {
+  it('display colour red temperature is 25 or higher', function() {
     for (var i=1; i<6; i++) {
       thermostat.increaseTemperature();
     }
