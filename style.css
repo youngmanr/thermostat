@@ -41,3 +41,15 @@
 #power-saving-status {
   float: left;
 }
+
+.circle
+    {
+    width:500px;
+    height:500px;
+    border-radius:250px;
+    font-size:80px;
+    color:black;
+    line-height:500px;
+    text-align:center;
+    background:green;
+    }

@@ -3,16 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Themostat</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <section>
-      <h1 id="temperature"></h1>
-      <button id="temperature-up">+</button>
-      <button id="temperature-down">-</button>
-      <button id="temperature-reset">reset</button>
+      <div class="circle" id="temperature"></div>
+      <button class="btn btn-default" id="temperature-up">+</button>
+      <button class="btn btn-default" id="temperature-down">-</button>
+      <button class="btn btn-default" id="temperature-reset">reset</button>
       <div class="led led-green" id="power-saving-status"></div>
-      <button id="powersaving">PSM</button>
+      <button class="btn btn-default" id="powersaving">PSM</button>
     </section>
     <script src="jquery.js"></script>
     <script src="src/thermostat.js"></script>
@@ -20,13 +22,16 @@
       $( document ).ready(function() {
         var thermostat = new Thermostat();
         $("#temperature").html(thermostat.getCurrentTemperature());
+        $( ".circle" ).css( "background", "green" );
         $( "#temperature-up" ).click(function( event ) {
           thermostat.increaseTemperature();
           $("#temperature").html(thermostat.getCurrentTemperature());
+          $( ".circle" ).css( "background", thermostat.displayColour() );
         });
         $( "#temperature-down" ).click(function( event ) {
           thermostat.decreaseTemperature();
           $("#temperature").html(thermostat.getCurrentTemperature());
+          $( ".circle" ).css( "background", thermostat.displayColour() );
         });
         $( "#temperature-reset" ).click(function( event ) {
           thermostat.resetTemperature();
